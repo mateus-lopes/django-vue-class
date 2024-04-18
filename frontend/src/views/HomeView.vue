@@ -15,7 +15,7 @@ onMounted(() => {
     } else {
       setTimeout(() => {
         router.push("auth/sign-in");
-      }, 2000);
+      }, 1000);
     }
   } catch (error) {
     console.error(error);
@@ -30,7 +30,7 @@ onMounted(() => {
     </div>
     <div v-else>
       <div class="loader"></div>
-      <p>Carregando ...</p>
+      Seção Expirada
     </div>
     </layout-comp>
 </template>
