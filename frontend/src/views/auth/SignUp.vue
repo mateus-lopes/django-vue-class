@@ -1,14 +1,14 @@
 <template>
     <layout-comp>
         <section class="p-8 rounded-3xl w-96 shadow-2xl bg-white">
-            <title-comp text="Criar Conta"></title-comp>
+            <title-page text="Criar Conta"></title-page>
             <form-sign-up></form-sign-up>
         </section>
     </layout-comp>
 </template>
   
 <script setup>
-import TitleComp from "@/components/TitleComp.vue";
+import TitlePage from "@/components/misc/TitlePage.vue";
 import FormSignUp from "@/components/forms/FormSignUp.vue";
-import LayoutComp from "@/components/LayoutComp.vue";
+import LayoutComp from "@/components/misc/LayoutComp.vue";
 </script>
