@@ -25,12 +25,12 @@ export const useUserStore = defineStore("user", () => {
         state.acess = data.acess;
         state.email = data.email;
         state.message = data.message;
+        router.push({ name: "home" });
       } catch (error) {
         console.error(error);
-        state.message = "Erro ao fazer login";
+        state.message = "Erro ao fazer login2";
       } finally {
         state.isLoading = false;
-        router.push({ name: "home" });
       }
     },
     async register(usuario) {
@@ -40,16 +40,19 @@ export const useUserStore = defineStore("user", () => {
         state.userLogged = data;
         state.email = data.email;
         state.message = data.message;
+        router.push({ name: "auth/sign-in" });
       } catch (error) {
         console.error(error);
         state.message = "Erro ao registrar";
       } finally {
         state.isLoading = false;
-        router.push({ name: "auth/sign-in" });
       }
     },
     logoutUser() {
       state.userLogged = false;
+    },
+    userLogged() {
+      return state.userLogged;
     },
     getUser() {
       return {
@@ -59,8 +62,11 @@ export const useUserStore = defineStore("user", () => {
         fullName: state.fullName,
       };
     },
-    userLogged() {
-      return state.userLogged;
+    getLoader() { 
+      return state.isLoading; 
+    },
+    getMessage() {
+      return state.message;
     }
   };
 

@@ -11,7 +11,7 @@ const error = ref("");
 
 const login = async () => {
   error.value = "";
-  
+
   if (!email.value || !password.value) {
     error.value = "Preencha todos os campos";
     return;
@@ -47,6 +47,6 @@ const login = async () => {
       />
     </div>
     <button-primary value="Entrar"></button-primary>
-    {{ error }}
+    <span class="error">{{ error }}</span>
   </form>
 </template>

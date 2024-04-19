@@ -13,7 +13,7 @@ const error = ref("");
 
 const register = async () => {
   error.value = "";
-  
+
   if (password.value !== confirmPassword.value) {
     error.value = "As senhas não coincidem!";
     return;
@@ -70,6 +70,6 @@ const register = async () => {
       />
     </div>
     <button-primary value="Cadastrar"></button-primary>
-    {{ error }}
+    <span class="error">{{ error }}</span>
   </form>
 </template>

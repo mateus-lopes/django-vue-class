@@ -1,10 +1,6 @@
 
 <script setup>
-import { ref } from "vue";
 import ButtonPrimary from "@/components/btns/BtnPrimary.vue";
-
-const password = ref("");
-
 const submit = () => {
   console.log("ver senha");
 };
@@ -12,7 +8,7 @@ const submit = () => {
 <template>
   <form @submit.prevent="submit">
     <p class="px-2 pb-4">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique iusto quibusdam animi illo.
+      Digite seu email para recuperar sua senha
     </p>
     <div class="mb-4 flex flex-col">
       <input
