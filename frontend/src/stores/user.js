@@ -55,6 +55,11 @@ export const useUserStore = defineStore("user", () => {
       }
     },
     logout() {
+      state.isLoading = true;
+      setTimeout(() => {
+        state.isLoading = false;
+        router.push({ name: "sign-in" });
+      }, 1000);
       state.logged = false;
     },
     isLogged() {
