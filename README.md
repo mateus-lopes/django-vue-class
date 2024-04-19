@@ -1,6 +1,6 @@
 # Login com Token (JWT)
 
-Conteudo abordado: __Django | Django REST | Vue (Composition API) | Pinia | Tailwind__
+Conteudo abordado: Django | Django REST | Vue (Composition API) | Pinia | Tailwind
 
 Esperamos que você:
 
