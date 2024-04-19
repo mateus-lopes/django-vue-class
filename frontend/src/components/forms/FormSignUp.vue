@@ -14,10 +14,35 @@ const error = ref("");
 const register = async () => {
   error.value = "";
 
-  if (password.value !== confirmPassword.value) {
-    error.value = "As senhas não coincidem!";
-    return;
-  }
+  const validations = [
+    {
+      condition: !fullName.value || !email.value || !password.value || !confirmPassword.value,
+      message: "Preencha todos os campos"
+    },
+    {
+      condition: password.value !== confirmPassword.value,
+      message: "As senhas não coincidem!"
+    },
+    {
+      condition: password.value.length < 6,
+      message: "A senha deve ter no mínimo 6 caracteres"
+    },
+    {
+      condition: password.value.length > 20,
+      message: "A senha deve ter no máximo 20 caracteres"
+    },
+    {
+      condition: fullName.value.length > 50,
+      message: "O nome deve ter no máximo 50 caracteres"
+    },
+    {
+      condition: fullName.value.split(" ").length < 2,
+      message: "Digite seu nome completo"
+    }
+  ];
+
+  validations.some(validation => error.value = validation.condition ? validation.message : "");
+  if (error.value) return;
 
   userStore.register({
     fullName: fullName.value,

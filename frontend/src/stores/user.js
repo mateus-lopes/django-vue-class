@@ -15,15 +15,18 @@ export const useUserStore = defineStore("user", () => {
   });
 
   const actions = {
+    clearMessage() {
+      state.message = "";
+    },
     async login(credentials) {
       let data;
       state.isLoading = true;
       try {
         data = await service_login(credentials);
-        if (!data.error) {
+        if (data.id != null) {
           router.push({ name: "home" });
         } else {
-          state.message = data.error;
+          state.message = data.message || 'Erro ao logar';
         }
       } catch (error) {
         state.message = error;

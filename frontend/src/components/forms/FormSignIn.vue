@@ -12,10 +12,23 @@ const error = ref("");
 const login = async () => {
   error.value = "";
 
-  if (!email.value || !password.value) {
-    error.value = "Preencha todos os campos";
-    return;
-  }
+  const validations = [
+    {
+      condition: !email.value || !password.value,
+      message: "Preencha todos os campos"
+    },
+    {
+      condition: password.value.length < 6,
+      message: "A senha deve ter no mínimo 6 caracteres"
+    },
+    {
+      condition: password.value.length > 20,
+      message: "A senha deve ter no máximo 20 caracteres"
+    }
+  ];
+
+  validations.some(validation => error.value = validation.condition ? validation.message : "");
+  if (error.value) return;
 
   userStore.login({
     email: email.value,

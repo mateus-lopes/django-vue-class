@@ -5,6 +5,8 @@ import LayoutComp from "@/components/misc/LayoutComp.vue";
 import AdditionalAuth from "@/components/forms/AdditionalAuth.vue";
 import LoadingComp from "@/components/misc/LoadingComp.vue";
 import ErrorMessage from "@/components/forms/ErrorMessage.vue";
+import { useUserStore } from "@/stores/user";
+const userStore = useUserStore();
 </script>
 
 <template>
@@ -18,8 +20,9 @@ import ErrorMessage from "@/components/forms/ErrorMessage.vue";
             <router-link
                 class="text-gray-400 hover:underline mt-2 block text-center text-sm"
                 to="/auth/sign-in"
+                @click="userStore.clearMessage()"
             >
-                Já tem uma conta? Faça login
+                Já tem uma conta?
             </router-link>
         </section>
     </layout-comp>
