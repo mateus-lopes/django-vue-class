@@ -257,4 +257,46 @@ CORS_ALLOWED_ORIGINS = [
 Mas aqui usaremos o primeiro exemplo para facilitar nosso trabalho.
 
 
+# 5. CADASTRO
+
+Agora faremos o nosso cadastro, para isso criaremos uma pasta chamada *utils* dentro do usuario, dentro da pasta *utils* faremos um arquivo chamado `cadastro.py`, nesse arquivo faremos o nosso código.
+
+Então vamos começar :D
+
+```python
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
+from rest_framework.permissions import AllowAny
+from rest_framework.response import Response
+from django.utils.translation import gettext_lazy as _
+from rest_framework.response import Response
+from rest_framework import status
+from ..models import Usuario
+
+@api_view(["POST"])
+@authentication_classes([])
+@permission_classes([AllowAny])
+
+def cadastrar_usuario(request):
+    email = request.data.get("email")
+    password = request.data.get("password")
+    full_name = request.data.get("full_name")
+
+    if(Usuario.objects.filter(email=email).exists()):
+        return Response({"error": _("Email já cadastrado")}, status=status.HTTP_400_BAD_REQUEST)
+    else:
+        usuario = Usuario.objects.create(email=email, full_name=full_name)
+        usuario.set_password(password)
+        usuario.save()
+         return Response({"message": _("Usuário cadastrado com sucesso")}, status=status.HTTP_201_CREATED)
+
+```
+
+Explicação:
+
+
+# 6. LOGIN
+
+```python
+
+```
 
