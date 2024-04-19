@@ -1,19 +1,8 @@
-# Login com Token (JWT)
+# BACKEND
 
-Conteudo abordado: __Django | Django REST | Vue (Composition API) | Pinia | Tailwind__
+> Obs: Após criar o projeto, nós iremos clonar o seguinte usuario já pronto. Utilizaremos um usuario já pronto para não precisarmos perder tempo criando o nosso.
 
-Esperamos que você:
-
-- Já tenha um pouco de familiaridade com Vue 3
-- Tenha conhecimento de comandos básicos do git
-- Domine as linguagens utilizadas: HTML, CSS, Javascript e Python
-
-
-## Começaremos o tutorial pelo nosso backend.
-
-Após criar o projeto, nós iremos clonar o seguinte usuario já pronto.
-Utilizaremos um usuario já pronto para não precisarmos perder tempo criando o nosso.
-(esse usuario é disponibilizado pelo professor Marco André no seu tutorial de 2023)
+> (esse usuario é disponibilizado pelo professor Marco André no seu tutorial de 2023)
 
 # 1. Modificando o usuário padrão do Django
 
