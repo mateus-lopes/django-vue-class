@@ -29,17 +29,18 @@ onMounted(() => {
     <layout-comp>
       <div v-if="userStore.isLogged()">
         <section class="p-12 rounded-3xl min-w-96 max-w-3xl shadow-2xl bg-white">
-          <div class="flex justify-start items-center">
+          <div class="flex justify-start items-center relative">
             <div class="hidden md:block">
               <auth-icon></auth-icon>
             </div>
             <div class="md:pl-6 flex flex-col">
               <h2 class="font-bold">
-                {{ user }}
+                {{ user.fullName }}
               </h2>
               <p class="text-gray-500 text-sm">
-                {{ user }}
+                {{ user.email }} 
               </p>
+              <span class="absolute right-0 font-bold text-indigo-600 text-sm">#{{ user.id }}</span>
             </div>
           </div>
         </section>
