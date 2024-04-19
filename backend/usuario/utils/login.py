@@ -10,7 +10,6 @@ User = get_user_model()
 @api_view(['POST'])
 @authentication_classes([])
 @permission_classes([AllowAny]) 
-
 def logar_usuario(request):
     email = request.data.get("email", '')
     password = request.data.get("password", '')
