@@ -7,57 +7,62 @@ export const useUserStore = defineStore("user", () => {
   const router = useRouter();
   const state = reactive({
     userId: null,
-    acess: "",
-    email: "",
     fullName: "",
-    userLogged: false,
+    email: "",
+    logged: false,
     message: "",
     isLoading: false,
   });
 
   const actions = {
     async login(credentials) {
+      let data;
       state.isLoading = true;
       try {
-        const data = await service_login(credentials);
-        state.userLogged = data;
-        state.userId = data.id;
-        state.acess = data.acess;
-        state.email = data.email;
-        state.message = data.message;
-        router.push({ name: "home" });
+        data = await service_login(credentials);
+        if (!data.error) {
+          router.push({ name: "home" });
+        } else {
+          state.message = data.error;
+        }
       } catch (error) {
-        console.error(error);
-        state.message = "Erro ao fazer login2";
+        state.message = error;
       } finally {
+        if (data) {
+          state.userId = data.id;
+          state.email = data.email;
+          state.fullName = data.full_name;
+          state.logged = true;
+        }
         state.isLoading = false;
       }
     },
     async register(usuario) {
+      let data;
       state.isLoading = true;
       try {
-        const data = await service_register(usuario);
-        state.userLogged = data;
-        state.email = data.email;
-        state.message = data.message;
-        router.push({ name: "auth/sign-in" });
+        data = await service_register(usuario);
+        state.message = data.error;
+        if (!data.error) {
+          router.push({ name: "sign-in" });
+        } else {
+          state.message = data.error;
+        }
       } catch (error) {
-        console.error(error);
-        state.message = "Erro ao registrar";
+        state.message = error;
       } finally {
         state.isLoading = false;
       }
     },
-    logoutUser() {
-      state.userLogged = false;
+    logout() {
+      state.logged = false;
     },
-    userLogged() {
-      return state.userLogged;
+    isLogged() {
+      return state.logged;
     },
     getUser() {
       return {
         id: state.userId,
-        acess: state.acess,
         email: state.email,
         fullName: state.fullName,
       };

@@ -10,7 +10,7 @@ const user = ref("");
 
 onMounted(() => {
   try {
-    if (userStore.userLogged()) {
+    if (userStore.isLogged()) {
       user.value = userStore.getUser();
     } else {
       setTimeout(() => {

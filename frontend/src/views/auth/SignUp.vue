@@ -1,5 +1,4 @@
 <script setup>
-import { useUserStore } from "@/stores/user";
 import TitlePage from "@/components/misc/TitlePage.vue";
 import FormSignUp from "@/components/forms/FormSignUp.vue";
 import LayoutComp from "@/components/misc/LayoutComp.vue";
@@ -14,7 +13,6 @@ import ErrorMessage from "@/components/forms/ErrorMessage.vue";
         <section class="p-8 rounded-3xl w-96 shadow-2xl bg-white">
             <title-page text="Criar Conta"></title-page>
             <form-sign-up></form-sign-up>
-            <span class="error">{{ userStore.state.message }}</span>
             <error-message></error-message>
             <additional-auth></additional-auth>
             <router-link
