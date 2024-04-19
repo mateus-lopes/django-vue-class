@@ -33,6 +33,7 @@ def logar_usuario(request):
             "refresh": str(refresh),
             "access": str(access),
             "email": user.email,
+            "full_name": user.full_name,
             "id": user.id,
             "message": "Login realizado com sucesso!"
         }
