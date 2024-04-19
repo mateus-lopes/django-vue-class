@@ -25,12 +25,9 @@ onMounted(() => {
 
 <template>
     <layout-comp>
-        <div v-if="userStore.userLogged()">
-        <h1 class="text-4xl font-bold">Bem vindo, {{ user.username }}</h1>
-    </div>
-    <div v-else>
-      <div class="loader"></div>
-      Seção Expirada
-    </div>
+        <div>
+            <div class="loader"></div>
+            Página não encontrada
+        </div>
     </layout-comp>
 </template>

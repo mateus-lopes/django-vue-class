@@ -7,7 +7,12 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: () => import('../views/HomeView.vue')
+    },
+    { 
+      path: '/:pathMatch(.*)*', 
+      name: 'NotFound', 
+      component: () => import('../views/NotFound.vue')
     },
     {
       path: '/auth/sign-in',
